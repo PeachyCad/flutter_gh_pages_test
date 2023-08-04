@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "paste_uploader" "\0"
+            VALUE "FileDescription", "things_todo_app" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "paste_uploader" "\0"
+            VALUE "InternalName", "things_todo_app" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "paste_uploader.exe" "\0"
-            VALUE "ProductName", "paste_uploader" "\0"
+            VALUE "OriginalFilename", "things_todo_app.exe" "\0"
+            VALUE "ProductName", "things_todo_app" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
