@@ -1,6 +1,6 @@
 {
-    "name": "paste_uploader",
-    "short_name": "paste_uploader",
+    "name": "things_todo_app",
+    "short_name": "things_todo_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
