@@ -12,38 +12,41 @@ jobs:
       my_secret: ${{secrets.ACCESS_TOKEN}}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
 
-      - run: flutter clean
-      - run: flutter pub get
-      - run: flutter build web --base-href=/flutter_gh_pages_test/ --wasm --release
+      - name: Run "flutter clean"
+        - run: flutter clean
+      - name: Run "flutter pub get"
+        - run: flutter pub get
+      - name: Run "flutter build web ..."
+        - run: flutter build web --base-href=/flutter_gh_pages_test/ --wasm --release
 
-      # Web deploy now is contained in build/web directory
-      - run: |
-          cd build
-          mkdir web-deploy
-          cd web-deploy
-          #! Update with your Email ID associated with GitHub
-          git config --global user.email 348111@mail.ru
-          #! Update with your username associated with GitHub
-          git config --global user.name PeachyCad
-          git config --global init.defaultBranch main
-          git init
-          # the repository to push the deploy into
-          #! Update the following with your username and repository
-          git remote add origin https://x-access-token:${{secrets.ACCESS_TOKEN}}@github.com/PeachyCad/flutter_gh_pages_test.git
-          git fetch origin gh-pages
-          git switch gh-pages
-          # copy the build that is there in ROOT/build/web into ROOT/build/web-deploy
-          cp -R ../web/* .
-          git status
-          git add .
-          # add commit of the previous commit from main
-          echo ""
-          echo "Committing to gh-pages: ${{ github.event.head_commit.message }}"
-          echo ""
-          git commit -m "${{ github.event.head_commit.message }}"
-          git push origin gh-pages
+      - name: Web deploy now is contained in build/web directory
+        - run: |
+            cd build
+            mkdir web-deploy
+            cd web-deploy
+            # Update with your Email ID associated with GitHub
+            git config --global user.email 348111@mail.ru
+            # Update with your username associated with GitHub
+            git config --global user.name PeachyCad
+            git config --global init.defaultBranch main
+            git init
+            # the repository to push the deploy into
+            # Update the following with your username and repository
+            git remote add origin https://x-access-token:${{secrets.ACCESS_TOKEN}}@github.com/PeachyCad/flutter_gh_pages_test.git
+            git fetch origin gh-pages
+            git switch gh-pages
+            # Copy the build that is there in ROOT/build/web into ROOT/build/web-deploy
+            cp -R ../web/* .
+            git status
+            git add .
+            # Add commit of the previous commit from main
+            echo ""
+            echo "Committing to gh-pages: ${{ github.event.head_commit.message }}"
+            echo ""
+            git commit -m "${{ github.event.head_commit.message }}"
+            git push origin gh-pages
