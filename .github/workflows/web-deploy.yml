@@ -24,7 +24,7 @@ jobs:
       - name: Run "flutter build web"
         run: flutter build web --base-href=/flutter_gh_pages_test/ --wasm --release
 
-        - name: Push changes
+      - name: Push changes
         run: |
             cd build
             mkdir web-deploy
