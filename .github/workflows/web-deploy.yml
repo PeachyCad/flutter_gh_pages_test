@@ -22,7 +22,7 @@ jobs:
       - name: Run "flutter pub get"
         run: flutter pub get
       - name: Run "flutter build web"
-        run: flutter build web --base-href=/flutter_gh_pages_test/ --wasm --release
+        run: flutter build web --base-href=/flutter_gh_pages_test/ --release
 
       - name: Push changes
         run: |
